@@ -37,13 +37,16 @@ roleRef:
   name: citrix-ipam-controller
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: citrix-ipam-controller
   namespace: kube-system
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: citrix-ipam-controller
   template:
     metadata:
       labels:

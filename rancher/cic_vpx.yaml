@@ -20,7 +20,7 @@ spec:
          - name: "NS_USER"
            value: "nsroot"
          - name: "NS_PASSWORD"
-           value: "nsroot"
+           value: "pwd123456"
          - name: "EULA"
            value: "yes"
          - name: "LOGLEVEL"
