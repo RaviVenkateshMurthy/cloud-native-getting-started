@@ -5,9 +5,9 @@ Kubernetes provides 3 ways of exposing Kubernetes apps to traffic outside of clu
 
 ### Why is LoadBalancer service type needed for private/hybrid clouds? 
 
-Kubernetes describes service type LoadBalancer as – 
+[Kubernetes documentation describes](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) service type LoadBalancer as – 
 
-On cloud providers which support external load balancers, setting the type field to LoadBalancer provisions a load balancer for your Service. The actual creation of the load balancer happens asynchronously, and information about the provisioned balancer is published in the Service’s .status.loadBalancer field. 
+> On cloud providers which support external load balancers, setting the type field to LoadBalancer provisions a load balancer for your Service. The actual creation of the load balancer happens asynchronously, and information about the provisioned balancer is published in the Service’s .status.loadBalancer field. 
 
 The important point to note in above definition is usage of “cloud providers” such as AWS, GCP, Azure and others. But what if you are building your own private cloud or a hybrid cloud – for example, multiple Kubernetes clusters managed on Rancher? There is no Enterprise grade solution available that supports Service type LoadBalancer! This means you’ll have different deployments of same app if it needs to be deployed on both public & private clouds. With Citrix’s service type LoadBalancer solution, you’ll get a uniform experience whether the ADC is deployed on public or private cloud. 
 
@@ -16,7 +16,7 @@ The important point to note in above definition is usage of “cloud providers�
 
 Below is a simplified architecture of Guestbook app if it is exposed as NodePort. This is an easy & convenient method, however, not production friendly – because you’ll have to manage NodePort numbers yourself and use K8s cluster node IPs. 
 
-< Topology 1> 
+![](./images/topology_nodeport.png)
 
 To make the solution production friendly, we’ll use Service type LoadBalancer, whose components are –  
 
@@ -29,7 +29,7 @@ To make the solution production friendly, we’ll use Service type LoadBalancer,
 
 This topology is explained below – 
 
-< Topology 2> 
+![](./images/topology_LoadBalancer.png)
 
 ### Pre-requisites 
 
